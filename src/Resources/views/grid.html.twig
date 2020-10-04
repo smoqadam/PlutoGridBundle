@@ -1,0 +1,25 @@
+{# @var grid \Pluto\GridBundle\Contracts\Grid\GridInterface #}
+{% include grid.searchTemplate %}
+
+<table class="{{ grid.tableCssClass }}">
+    <thead class="{{ grid.headerCssClass }}">
+    <tr>
+        {% for f in grid.header.fields %}
+            <th> {{ f.value }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+        {% for entity in grid.entities %}
+            <tr>
+                {% for field in entity.fields %}
+                    <td>
+                        {% include field.template with {"field":field} %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include grid.paginator.template with {"grid":grid} %}

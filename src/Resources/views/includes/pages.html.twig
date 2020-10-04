@@ -1,0 +1,10 @@
+<ul class="list-inline">
+    {% for page in grid.paginator.pages %}
+        {% if page == grid.paginator.currentPage %}
+            <li class="list-inline-item">{{ page }}</li>
+        {% else %}
+            <li class="list-inline-item">
+                <a class="btn btn-dark" href="?page={{ page }}">{{ page }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>
